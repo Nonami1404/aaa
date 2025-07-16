@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnyTech - Electronics Repair & Accessories</title>
+    <link rel="logo" href="">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a2e1a 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #7cb342;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 80px;
+            max-height: 60px;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(45deg, #7cb342, #689f38);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+        }
+        
+        .logo h1 {
+            color: #7cb342;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .lang-btn {
+            padding: 4px 10px;
+            background: rgba(124, 179, 66, 0.1);
+            border: 1px solid #7cb342;
+            color: #7cb342;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background: #7cb342;
+            color: #000;
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 60px;
+            padding: 2rem 0;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(45deg, rgba(124, 179, 66, 0.1), rgba(104, 159, 56, 0.1));
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #7cb342, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .cta-btn.primary {
+            background: linear-gradient(45deg, #7cb342, #689f38);
+            color: white;
+        }
+        
+        .cta-btn.secondary {
+            background: transparent;
+            color: #7cb342;
+            border: 2px solid #7cb342;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(124, 179, 66, 0.3);
+        }
+        
+        /* Services Section */
+        .services {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #7cb342;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(124, 179, 66, 0.3);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #7cb342;
+            box-shadow: 0 10px 30px rgba(124, 179, 66, 0.2);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            color: #7cb342;
+            margin-bottom: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(124, 179, 66, 0.3);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #7cb342, #689f38);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(124, 179, 66, 0.3);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            filter: invert(90%) hue-rotate(180deg);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(124, 179, 66, 0.3);
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0.4rem 0;
+            }
+            
+            .logo {
+                max-width: 100px;
+                max-height: 50px;
+            }
+            
+            .logo h1 {
+                font-size: 1.2rem;
+                text-shadow: 0 2px 8px rgba(124, 179, 66, 0.4);
+            }
+            
+            .logo-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+            }
+            
+            .lang-btn {
+                padding: 3px 8px;
+                font-size: 0.8rem;
+                border: 1px solid rgba(124, 179, 66, 0.6);
+                background: rgba(124, 179, 66, 0.15);
+            }
+            
+            main {
+                margin-top: 50px;
+            }
+            
+            .hero {
+                padding: 2rem 1rem;
+                background: linear-gradient(135deg, rgba(124, 179, 66, 0.15), rgba(104, 159, 56, 0.15));
+                border: 1px solid rgba(124, 179, 66, 0.2);
+                box-shadow: 0 8px 32px rgba(124, 179, 66, 0.1);
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+                margin-bottom: 1.5rem;
+                text-shadow: 0 2px 10px rgba(124, 179, 66, 0.3);
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            
+            .cta-btn {
+                width: 80%;
+                max-width: 300px;
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .contact {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .service-card {
+                padding: 2.5rem 1.5rem;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(124, 179, 66, 0.4);
+                box-shadow: 0 4px 20px rgba(124, 179, 66, 0.1);
+            }
+            
+            .service-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(124, 179, 66, 0.25);
+            }
+            
+            .service-icon {
+                font-size: 3.5rem;
+                margin-bottom: 1.5rem;
+                filter: drop-shadow(0 4px 8px rgba(124, 179, 66, 0.3));
+            }
+            
+            .contact-info {
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(124, 179, 66, 0.4);
+                box-shadow: 0 4px 20px rgba(124, 179, 66, 0.1);
+            }
+            
+            .contact-icon {
+                width: 45px;
+                height: 45px;
+                box-shadow: 0 4px 15px rgba(124, 179, 66, 0.3);
+            }
+            
+            .map-container {
+                border: 1px solid rgba(124, 179, 66, 0.4);
+                box-shadow: 0 4px 20px rgba(124, 179, 66, 0.1);
+            }
+            
+            .map-container iframe {
+                height: 250px;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+                text-shadow: 0 2px 10px rgba(124, 179, 66, 0.3);
+            }
+        }
+        
+        /* Additional mobile enhancements */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .header-content {
+                padding: 0.3rem 0;
+            }
+            
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+            
+            .logo-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 13px;
+            }
+            
+            .lang-btn {
+                padding: 2px 6px;
+                font-size: 0.75rem;
+            }
+            
+            main {
+                margin-top: 45px;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-btn {
+                width: 90%;
+                padding: 12px 25px;
+            }
+            
+            .service-card {
+                padding: 2rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(124, 179, 66, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(124, 179, 66, 0.8); }
+        }
+        
+        .logo-icon {
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        /* Enhanced mobile animations */
+        @media (max-width: 768px) {
+            .service-card {
+                animation: fadeInUp 0.6s ease-out;
+            }
+            
+            .service-card:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+            
+            .service-card:nth-child(3) {
+                animation-delay: 0.4s;
+            }
+            
+            .contact-info {
+                animation: slideInLeft 0.8s ease-out;
+            }
+            
+            .map-container {
+                animation: slideInRight 0.8s ease-out;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="round">
+                        <img src="Снимок_экрана_2025-07-16_095859-removebg-preview.png" alt="" width="120px">
+                    </div>
+                </div>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+                    <button class="lang-btn" onclick="switchLanguage('ru')">RU</button>
+                    <button class="lang-btn" onclick="switchLanguage('uz')">UZ</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h2 id="hero-title">Professional Electronics Repair & Accessories</h2>
+                <p id="hero-subtitle">Fast, reliable service for all your tech needs</p>
+                <div class="cta-buttons">
+                    <a href="tel:+998994445877" class="cta-btn primary">
+                        📞 <span id="call-btn">Call Now</span>
+                    </a>
+                    <a href="https://t.me/Shuhratmc88" class="cta-btn secondary" target="_blank">
+                        💬 <span id="telegram-btn">Telegram</span>
+                    </a>
+                </div>
+            </section>
+            
+            <section class="services">
+                <h2 class="section-title" id="services-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🔧</div>
+                        <h3 id="repair-title">Device Repair</h3>
+                        <p id="repair-desc">Professional repair services for smartphones, laptops, tablets, and other electronics</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🛠️</div>
+                        <h3 id="maintenance-title">Maintenance</h3>
+                        <p id="maintenance-desc">Regular maintenance and optimization to keep your devices running smoothly</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎧</div>
+                        <h3 id="accessories-title">Accessories</h3>
+                        <p id="accessories-desc">Wide selection of quality accessories: cases, chargers, headphones, and more</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="contact">
+                <div class="contact-info">
+                    <h2 class="section-title" id="contact-title">Contact Us</h2>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <div><strong>Mobile:</strong>(+998) 99-444-58-77 (Шухрат)</div>
+                            <div><strong>Mobile:</strong>(+998) 95-069-05-20 (Зиёвиддин)</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong id="address-label">Address:</strong><br>
+                            <span id="address-text">улица Абдуллы Кадыри, 21, Шайхантахурский район, Ташкент</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d187.25928126104375!2d69.24828235980887!3d41.32738411293604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2s!4v1752583392170!5m2!1sru!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p id="footer-text">&copy; 2024 TechFix Pro. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                'hero-title': 'Electronics Repair & Accessories',
+                'hero-subtitle': 'Fast, reliable service for all your tech needs',
+                'call-btn': 'Call Now',
+                'whatsapp-btn': 'Telegram',
+                'services-title': 'Our Services',
+                'repair-title': 'Device Repair',
+                'repair-desc': 'Professional repair services for smartphones, laptops, tablets, and other electronics',
+                'maintenance-title': 'Maintenance',
+                'maintenance-desc': 'Regular maintenance and optimization to keep your devices running smoothly',
+                'accessories-title': 'Accessories',
+                'accessories-desc': 'Wide selection of quality accessories: cases, chargers, headphones, and more',
+                'contact-title': 'Contact Us',
+                'address-label': 'Address:',
+                'address-text': 'улица Абдуллы Кадыри, 21, Шайхантахурский район, Ташкент',
+                'footer-text': '© 2024 TechFix Pro. All rights reserved.'
+            },
+            ru: {
+                'hero-title': 'Ремонт электроники и аксессуары',
+                'hero-subtitle': 'Быстрый, надежный сервис для всех ваших технических потребностей',
+                'call-btn': 'Позвонить',
+                'whatsapp-btn': 'Telegram',
+                'services-title': 'Наши услуги',
+                'repair-title': 'Ремонт устройств',
+                'repair-desc': 'Профессиональные услуги по ремонту смартфонов, ноутбуков, планшетов и другой электроники',
+                'maintenance-title': 'Обслуживание',
+                'maintenance-desc': 'Регулярное обслуживание и оптимизация для бесперебойной работы ваших устройств',
+                'accessories-title': 'Аксессуары',
+                'accessories-desc': 'Широкий выбор качественных аксессуаров: чехлы, зарядки, наушники и многое другое',
+                'contact-title': 'Связаться с нами',
+                'address-label': 'Адрес:',
+                'address-text': 'улица Абдуллы Кадыри, 21, Шайхантахурский район, Ташкент',
+                'footer-text': '© 2024 TechFix Pro. Все права защищены.'
+            },
+            uz: {
+                'hero-title': 'Elektronika ta\'miri va aksessuarlar',
+                'hero-subtitle': 'Barcha texnik ehtiyojlaringiz uchun tez va ishonchli xizmat',
+                'call-btn': 'Qo\'ng\'iroq qiling',
+                'whatsapp-btn': 'Telegram',
+                'services-title': 'Bizning xizmatlar',
+                'repair-title': 'Qurilmalarni ta\'mirlash',
+                'repair-desc': 'Smartfonlar, noutbuklar, planshetlar va boshqa elektronika uchun professional ta\'mirlash xizmatlari',
+                'maintenance-title': 'Texnik xizmat',
+                'maintenance-desc': 'Qurilmalaringizning muammosiz ishlashi uchun muntazam texnik xizmat va optimallashtirish',
+                'accessories-title': 'Aksessuarlar',
+                'accessories-desc': 'Sifatli aksessuarlarning keng tanlovi: g\'iloflar, zaryadlovchilar, quloqchinlar va boshqalar',
+                'contact-title': 'Biz bilan bog\'laning',
+                'address-label': 'Manzil:',
+                'address-text': 'улица Абдуллы Кадыри, 21, Шайхантахурский район, Ташкент',
+                'footer-text': '© 2024 TechFix Pro. Barcha huquqlar himoyalangan.'
+            }
+        };
+        
+        let currentLanguage = 'en';
+        
+        // Auto-detect browser language
+        function detectLanguage() {
+            const browserLang = navigator.language.toLowerCase();
+            if (browserLang.includes('ru')) {
+                return 'ru';
+            } else if (browserLang.includes('uz')) {
+                return 'uz';
+            }
+            return 'en';
+        }
+        
+        // Switch language function
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+            
+            // Update text content
+            Object.keys(translations[lang]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            const detectedLang = detectLanguage();
+            switchLanguage(detectedLang);
+        });
+    </script>
+</body>
+</html>
